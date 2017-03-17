@@ -1,0 +1,30 @@
+page-login {
+    .loginerror {
+        white-space:normal;
+        font-size: 1em;
+        color:#f53d3d;
+    }
+    .loginheader {
+        padding: 10px;
+        text-align: center;
+        height: 60px;
+    }
+    .loginmain{
+        text-align: center;
+        margin-top: 60px;
+        padding-top: 20px;
+        background: url(https://www.trivento.nl/wp-content/uploads/2015/01/gradient.png) center;
+        background-size: cover;
+        height:100%;
+    }
+    .loginfields {
+        padding: 0 15px;
+        margin-right: auto;
+        margin-left: auto;
+        max-width: 600px;
+    }
+    .loginimage {
+        height: auto;
+        width: 300px;
+    }
+}

@@ -1,0 +1,30 @@
+<ion-content>
+  <div class="loginheader">
+    <img src="assets/img/logo.png">
+  </div>
+  <div class="loginmain">
+    <ion-row class="loginfields">
+      <ion-col>
+        <ion-item>
+          <ion-label floating color="primary">Gebruikersnaam</ion-label>
+          <ion-input [(ngModel)]="username" type="text" autocomplete="on" required>
+          </ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label floating color="primary">Wachtwoord</ion-label>
+          <ion-input [(ngModel)]="password" name="passwordInput" type="password" required>
+          </ion-input>
+        </ion-item>
+        <ion-row responsive-sm>
+          <ion-col>
+            <button ion-button (click)="onLogin()" type="submit" color="primary" block>Inloggen</button>
+          </ion-col>
+        </ion-row>
+        <ion-item [hidden]="!errorMessage" padding-left>
+          <label class="loginerror">{{errorMessage}}</label>
+        </ion-item>
+      </ion-col>
+    </ion-row>
+    <img src="https://www.trivento.nl/wp-content/uploads/2016/02/mobslide.png" class="loginimage">
+  </div>
+</ion-content>

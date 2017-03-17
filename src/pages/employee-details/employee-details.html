@@ -1,0 +1,65 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>
+      {{employee.first_name}} {{employee.last_name}}
+    </ion-title>
+    <ion-buttons end>
+      <button ion-button (click)="edit($event)" [hidden]="mode != 'browse'">
+                <ion-icon name="create"></ion-icon>
+            </button>
+      <button ion-button (click)="cancel($event)" [hidden]="mode == 'browse'">
+                <ion-icon name="backspace"></ion-icon>
+            </button>
+      <button ion-button (click)="save($event)" [hidden]="mode == 'browse'">
+                <ion-icon name="checkbox"></ion-icon>
+            </button>
+    </ion-buttons>
+  </ion-navbar>
+</ion-header>
+
+<ion-content>
+  <ion-card>
+    <ion-card-header>
+      <ion-list>
+        <ion-item>
+          <ion-label floating color="primary">Voornaam</ion-label>
+          <ion-input [disabled]="mode == 'browse'" [(ngModel)]="employeeCopy.first_name" type="text">
+          </ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label floating color="primary">Achternaam</ion-label>
+          <ion-input [disabled]="mode == 'browse'" [(ngModel)]="employeeCopy.last_name" type="text">
+          </ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label floating color="primary">Email</ion-label>
+          <ion-input [disabled]="mode == 'browse'" [(ngModel)]="employeeCopy.email" type="email">
+          </ion-input>
+        </ion-item>
+        <ion-list radio-group [(ngModel)]="employeeCopy.gender">
+          <ion-list-header >
+            <span color="primary">Geslacht</span>
+          </ion-list-header>
+          <ion-item>
+            <ion-label>Man</ion-label>
+            <ion-radio value="Male" [disabled]="mode == 'browse'"></ion-radio>
+          </ion-item>
+          <ion-item>
+            <ion-label>Vrouw</ion-label>
+            <ion-radio value="Female" [disabled]="mode == 'browse'"></ion-radio>
+          </ion-item>
+        </ion-list>
+        <ion-item>
+          <ion-label floating color="primary">Adres</ion-label>
+          <ion-input [disabled]="mode == 'browse'" [(ngModel)]="employeeCopy.address" type="text">
+          </ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label floating color="primary">Functie</ion-label>
+          <ion-input [disabled]="mode == 'browse'" [(ngModel)]="employeeCopy.job_role" type="text">
+          </ion-input>
+        </ion-item>
+      </ion-list>
+    </ion-card-header>
+  </ion-card>
+</ion-content>
