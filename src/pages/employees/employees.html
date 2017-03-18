@@ -5,19 +5,15 @@
     </button>
     <ion-title>Personeel</ion-title>
   </ion-navbar>
-  <ion-searchbar [(ngModel)]="filterName" placeholder="Zoek op naam"></ion-searchbar>
-  <ion-searchbar [(ngModel)]="filterJobRole" placeholder="Filter op functie"></ion-searchbar>
+  <ion-searchbar [(ngModel)]="filterName" (ionInput)="filterEmployees($event)" placeholder="Zoek op naam"></ion-searchbar>
+  <ion-searchbar [(ngModel)]="filterJobRole" (ionInput)="filterEmployees($event)" placeholder="Filter op functie"></ion-searchbar>
 </ion-header>
 
-<ion-content style="padding-top: 60px;">
+<ion-content>
   <ion-list>
-    <ion-card *ngFor="let employee of employees |filterEmployees:filterName:filterJobRole" (click)="employeeTapped($event, employee)">
-      <ion-card-header>
-        <ion-item>
-          <h3>{{employee.first_name}} {{employee.last_name}}</h3>
-          <p>{{employee.job_role}}</p>
-        </ion-item>
-      </ion-card-header>
-    </ion-card>
+    <button ion-item *ngFor="let employee of employees" (click)="employeeTapped($event, employee)">
+      <h3 ion-text color="primary">{{employee.gender == "Male" ? "Dhr." : "Mevr."}} {{employee.first_name}} {{employee.last_name}}</h3>
+      <p>{{employee.job_role}}</p>
+    </button>
   </ion-list>
 </ion-content>

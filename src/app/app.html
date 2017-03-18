@@ -11,13 +11,13 @@
   <ion-content class="menulist">
     <ion-list>
       <button menuClose ion-item *ngFor="let p of pages" (click)="openPage(p)">
-        {{p.title}}
+        <span ion-text color="primary">{{p.title}}</span>
       </button>
       <button menuClose ion-item (click)="clearData()">
-        Reset data 
+        <span ion-text color="primary">Reset data</span>
       </button>
       <button menuClose ion-item (click)="logout()">
-        Uitloggen
+        <span ion-text color="primary">Uitloggen</span>
       </button>
     </ion-list>
   </ion-content>

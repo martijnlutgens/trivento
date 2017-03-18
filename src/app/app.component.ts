@@ -4,7 +4,6 @@ import { StatusBar, Splashscreen } from 'ionic-native';
 
 import { LoginPage } from '../pages/login/login';
 import { EmployeesPage } from '../pages/employees/employees';
-//import { AboutPage } from '../pages/about/about';
 
 import { Data } from '../providers/data';
 import { Storage } from '@ionic/storage';
@@ -16,22 +15,14 @@ export class MyApp {
   @ViewChild(Nav) nav: Nav;
 
   rootPage: any;
-
   pages: Array<{ title: string, component: any }>;
-
   storage = new Storage;
-  data: Data;
 
-  constructor(public platform: Platform, data: Data) {
-    this.data = data;
+  constructor(public platform: Platform, public data: Data) {
     this.initializeApp();
 
     // used for an example of ngFor and navigation
-    this.pages = [
-      //{ title: 'Personeel', component: EmployeesPage },
-      //{ title: 'Over', component: AboutPage }
-    ];
-
+    this.pages = [];
   }
 
   initializeApp() {
@@ -45,12 +36,11 @@ export class MyApp {
   }
 
   login() {
+    // if already logged in skip login page
     this.storage.get("username").then(username => {
       this.storage.get("password").then(password => {
-        this.data.login(username, password).then(resultObject => {
-          console.log("resultObject: " + resultObject["success"])
-          if (resultObject["success"]) {
-            console.log("success");
+        this.data.login(username, password).then(loginResult => {
+          if (loginResult["success"]) {
             this.rootPage = EmployeesPage;
           } else {
             this.rootPage = LoginPage;
@@ -62,19 +52,14 @@ export class MyApp {
 
   clearData() {
     this.storage.remove("employees").then(result => {
-      console.log("clearData: " + result)
       this.nav.setRoot(EmployeesPage);
     });
   }
 
   logout() {
-    return new Promise(resolve => {
-      this.storage.remove("username").then(result => {
-        console.log("storage remove username: " + result);
-        this.storage.remove("password").then((result) => {
-          console.log("storage remove password: " + result);
-          this.nav.setRoot(LoginPage);
-        });
+    this.storage.remove("username").then(result => {
+      this.storage.remove("password").then(result => {
+        this.nav.setRoot(LoginPage);
       });
     });
   }

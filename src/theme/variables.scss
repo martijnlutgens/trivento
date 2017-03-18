@@ -25,7 +25,7 @@ $font-path: "../assets/fonts";
 
 $colors: (
   primary:    #5b3072,
-  secondary:  #dfdc4a,
+  secondary:  #b72d41,
   danger:     #f53d3d,
   light:      #f4f4f4,
   dark:       #222
@@ -37,24 +37,20 @@ $toolbar-border-color:       #b2b2b2 !default;
 $toolbar-text-color:         map-get($colors, primary) !default;
 $toolbar-active-color:       map-get($colors, light) !default;
 $toolbar-inactive-color:     #8c8c8c !default;
-$toolbar-md-text-color:      map-get($colors, light) !default;
-$toolbar-md-button-color:    map-get($colors, light) !default;
-$toolbar-ios-text-color:     map-get($colors, light) !default;
-$bar-button-ios-color:       map-get($colors, light) !default;
 
 // App iOS Variables
 // --------------------------------------------------
 // iOS only Sass variables can go here
 
-
-
+$toolbar-ios-text-color:     map-get($colors, light) !default;
+$bar-button-ios-color:       map-get($colors, light) !default;
 
 // App Material Design Variables
 // --------------------------------------------------
 // Material Design only Sass variables can go here
 
-
-
+$toolbar-md-text-color:      map-get($colors, light) !default;
+$toolbar-md-button-color:    map-get($colors, light) !default;
 
 // App Windows Variables
 // --------------------------------------------------

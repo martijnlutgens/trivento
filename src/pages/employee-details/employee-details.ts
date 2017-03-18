@@ -11,13 +11,11 @@ export class EmployeeDetailsPage {
   private employee: any;
   private employeeCopy: any;
   private mode: string;
-  private data;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, data: Data) {
-    this.data = data;
-    this.navParams = navParams;
-    this.employee = this.navParams.get("employee");
-    this.employeeCopy = this.data.clone(this.employee);
+  constructor(public navCtrl: NavController, public navParams: NavParams, public data: Data) {
+    this.employee = navParams.get("employee");
+    //make use of copy to be able to revert changes
+    this.employeeCopy = this.data.cloneObject(this.employee);
     this.mode = "browse";
   }
 
@@ -27,6 +25,7 @@ export class EmployeeDetailsPage {
 
   save() {
     this.mode = 'browse';
+    //copy properties and save
     for (var key in this.employeeCopy) {
       this.employee[key] = this.employeeCopy[key];
     }
@@ -35,6 +34,7 @@ export class EmployeeDetailsPage {
 
   cancel() {
     this.mode = 'browse';
-    this.employeeCopy = this.data.clone(this.employee);
+    //revert copy
+    this.employeeCopy = this.data.cloneObject(this.employee);
   }
 }

@@ -13,22 +13,24 @@ export class EmployeesPage {
   private filterName:string;
   private filterJobRole:string;
   private employees: any;
-  private data:Data;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, menuCtrl: MenuController, data: Data) {
-    this.data = data;
+  constructor(public navCtrl: NavController, public navParams: NavParams, public menuCtrl: MenuController, public data: Data) {
     menuCtrl.enable(true);
     this.employees = [];
     this.filterName = "";
     this.filterJobRole = "";
     this.data.getEmployees().then(result => {
-      console.log(JSON.stringify(result[0]));
-      this.employees = result;
+      this.employees = result;     
     });
   }
+
   employeeTapped(event, employee) {
     this.navCtrl.push(EmployeeDetailsPage, {
       employee: employee
     });
+  }
+  
+  filterEmployees(){
+    this.employees = this.data.filterEmployees(this.filterName, this.filterJobRole);
   }
 }

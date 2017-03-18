@@ -87,18 +87,19 @@ class TriventoAPI {
         if (isset($postdata)) {
             $request = json_decode($postdata);
            
-            $username = $request ->username; 
-            $password = $request ->password;
-            if($username == "trivento" && $username == "password"){
+            $username = $request->username; 
+            $password = $request->password;
+
+            if($username == "trivento@trivento.nl" && $password == "Trivento"){
                 $result = array('success' => true, 'errorMessage' => null);
                 sendResponse(200, json_encode($result));
             } else {
                 if (isset($username) && isset($password)) {
-                    $result = array('success' => false, 'errorMessage' => "Gebruikersnaam of wachtwoord is niet correct. Hint: trivento");                    
-                    sendResponse(403, json_encode($result));              
+                    $result = array('success' => false, 'errorMessage' => "Gebruikersnaam of wachtwoord is niet correct.");                    
+                    sendResponse(200, json_encode($result));              
                 } else {
-                    $result = array('success' => false, 'errorMessage' => "Gebruikersnaam of wachtwoord is niet correct. Hint: trivento");                    
-                    sendResponse(200, json_encode($request));  
+                    $result = array('success' => false, 'errorMessage' => "Gebruikersnaam of wachtwoord is niet correct.");                    
+                    sendResponse(200, json_encode($result));  
                 }
             }
         }
