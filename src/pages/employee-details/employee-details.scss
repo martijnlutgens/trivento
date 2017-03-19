@@ -3,4 +3,22 @@ page-employee-details {
         white-space: normal;
         font-size: 1.6rem !important;     
     }
+
+    .list-header-md {
+        border-top: none !important;
+        max-width: 100px;
+        float: left;
+    }
+
+    .list-header-ios {
+        text-transform: none !important;
+    }
+
+    ion-list .checklist  {
+        margin: 0;
+    }
+    
+    .item-ios, .item-radio, .inner-item {
+        max-width: 150px;
+    }
 }

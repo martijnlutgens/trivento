@@ -23,15 +23,15 @@
     <ion-card-header>
       <p><span ion-text color="primary">Voornaam:</span> {{employeeCopy.first_name}}</p>
       <p><span ion-text color="primary">Achternaam:</span> {{employeeCopy.last_name}}</p>
-      <p><span ion-text color="primary">Email:</span> {{employeeCopy.email}}</p>      
+      <p><span ion-text color="primary">Geslacht:</span> {{employeeCopy.gender == "Male" ? "Man" : "Vrouw"}}</p>
+      <p><span ion-text color="primary">Email:</span> {{employeeCopy.email}}</p>
       <p><span ion-text color="primary">Adres:</span> {{employeeCopy.address}}</p>
       <p><span ion-text color="primary">Functie:</span> {{employeeCopy.job_role}}</p>
-      <p><span ion-text color="primary">Geslacht:</span> {{employeeCopy.gender == "Male" ? "Man" : "Vrouw"}}</p>
     </ion-card-header>
   </ion-card>
   <!--END browse view-->
   <!--START edit view-->
-  <ion-list [hidden]="mode == 'browse'">
+  <ion-list no-lines [hidden]="mode == 'browse'">
     <ion-item>
       <ion-label floating color="primary">Voornaam</ion-label>
       <ion-input [(ngModel)]="employeeCopy.first_name" type="text">
@@ -42,6 +42,19 @@
       <ion-input [(ngModel)]="employeeCopy.last_name" type="text">
       </ion-input>
     </ion-item>
+    <ion-list radio-group no-lines class="checklist" [(ngModel)]="employeeCopy.gender">
+      <ion-list-header>
+        <span ion-text color="primary">Geslacht</span>
+      </ion-list-header>
+      <ion-item>
+        <ion-label>Man</ion-label>
+        <ion-radio value="Male" [disabled]="mode == 'browse'"></ion-radio>
+      </ion-item>
+      <ion-item>
+        <ion-label>Vrouw</ion-label>
+        <ion-radio value="Female" [disabled]="mode == 'browse'"></ion-radio>
+      </ion-item>
+    </ion-list>
     <ion-item>
       <ion-label floating color="primary">Email</ion-label>
       <ion-input [(ngModel)]="employeeCopy.email" type="email">
@@ -57,19 +70,6 @@
       <ion-input [(ngModel)]="employeeCopy.job_role" type="text">
       </ion-input>
     </ion-item>
-    <ion-list radio-group [(ngModel)]="employeeCopy.gender">
-      <ion-list-header>
-        <span ion-text color="primary">Geslacht</span>
-      </ion-list-header>
-      <ion-item>
-        <ion-label>Man</ion-label>
-        <ion-radio value="Male" [disabled]="mode == 'browse'"></ion-radio>
-      </ion-item>
-      <ion-item>
-        <ion-label>Vrouw</ion-label>
-        <ion-radio value="Female" [disabled]="mode == 'browse'"></ion-radio>
-      </ion-item>
-    </ion-list>
   </ion-list>
   <!--END browse view-->
 </ion-content>
