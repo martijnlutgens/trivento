@@ -5,20 +5,23 @@ page-employee-details {
     }
 
     .list-header-md {
-        border-top: none !important;
+        border-top: none;
         max-width: 100px;
         float: left;
     }
 
     .list-header-ios {
-        text-transform: none !important;
+        text-transform: none;
+        letter-spacing: inherit;
+        font-weight: inherit;
+        font-size: 1.3rem;
     }
 
     ion-list .checklist  {
         margin: 0;
     }
     
-    .item-ios, .item-radio, .inner-item {
+    ion-list .checklist, .item-radio .inner-item {
         max-width: 150px;
     }
 }
